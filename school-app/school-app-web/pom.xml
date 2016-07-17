@@ -5,6 +5,6 @@
     <artifactId>school-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>in.work</groupId>
   <artifactId>school-app-web</artifactId>
+  <packaging>war</packaging>
 </project>
