@@ -6,5 +6,7 @@
   <packaging>pom</packaging>
   <modules>
   <module>school-app-foundation</module>
+  <module>school-app-services</module>
+  <module>school-app-web</module>
   </modules>
 </project>
