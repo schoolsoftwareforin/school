@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+<head >
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+
+<script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script type="text/javascript">
+        var app = angular.module('Demo', []);
+        app.controller('clt', function($scope){
+        	$scope.prop1 = 10;
+        	$scope.xyz= function ()
+        	{
+        		myfunc();
+        		myFunc2();
+        		$scope.prop1 = 20;
+        	}
+        	
+        })
+        </script>
+        <script type="text/javascript">
+        function test(){
+        	myfunc();
+        	myFunc2();
+        }
+        
+        function myfunc(){
+        	var a=10;
+        	alert(a);
+        }
+        
+        function myFunc2(){
+        	alert(a);
+        }
+        
+        </script>
+        </head>
+<body ng-controller = 'clt'>
+<div><input ng-model = "Ankur"></<input></div>
+<span>{{prop1}}</span>
+
+<button ng-show="12" onclick="test()" >Test</button>
+</body>
+</html>

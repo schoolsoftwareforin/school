@@ -5,6 +5,6 @@
 	version="3.0">
 	<display-name>school-app-web</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>pages/index.html</welcome-file>
 	</welcome-file-list>
 </web-app>
