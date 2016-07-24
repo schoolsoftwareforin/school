@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context = "http://www.springframework.org/schema/context"
+    xmlns:mvc = "http://www.springframework.org/schema/mvc" xmlns:tx = "http://www.springframework.org/schema/tx"
+    xsi:schemaLocation = "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+  <context:annotation-config/>
+  <context:component-scan base-package = "in.work"/>
+  <mvc:resources mapping = "/app/**" location = "/app/"></mvc:resources>
+  
+  <mvc:annotation-driven/>
+  <tx:annotation-driven/>
+  
+  <bean id = "transactionManager" class = "org.springframework.orm.jpa.JpaTransactionManager">
+    <property name = "entityManagerFactory" ref = "entityManagerFactory"/>
+  </bean>
+  
+  <bean id = "entityManagerFactory" class = "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name = "persistenceUnitName" value = "mainPU"/>
+    <property name = "dataSource" ref = "dataSource"/>
+    <property name = "jpaVendorAdapter" ref = "jpaAdapter"/>
+    <property name = "jpaDialect">
+      <bean class = "org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+    </property>
+  </bean>
+  
+  <bean id = "dataSource" class = "org.apache.commons.dbcp.BasicDataSource">
+    <property name = "driverClassName" value = "org.h2.Driver"></property>
+    <property name = "initialSize" value = "10"></property>
+    <property name = "maxActive" value = "5"></property>
+    <property name = "maxWait" value = "0"></property>
+    <property name = "testWhileIdle" value = "true"></property>
+    <property name = "maxIdle" value = "3"></property>
+    <property name = "minIdle" value = "2"></property>
+    <property name = "url" value = "jdbc:h2:mem:myschool_mem"></property>
+    <property name = "password" value = ""></property>
+    <property name = "username" value = "sa"></property>
+  </bean>
+  
+  <bean id = "jpaAdapter" class = "org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    <property name = "showSql" value = "false"/>
+  </bean>
+</beans>
